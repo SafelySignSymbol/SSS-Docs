@@ -56,13 +56,13 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs',
+          // editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs/blob/master',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs',
+          // editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
