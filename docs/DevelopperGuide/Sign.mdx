@@ -1,0 +1,101 @@
+---
+sidebar_position: 3
+---
+
+# Method Transaction Sign
+
+SSS オブジェクトにより提供されるトランザクションへの署名を要求するメソッド群
+
+## requestSign
+
+- 引数 なし
+- 戻り値 Promise<SignedTransaction\>
+
+SSS に登録されたトランザクションへと署名し、署名済みトランザクションを返却する。
+
+```ts
+// window.SSS
+const tx = ...;
+
+window.SSS.setTransaction(tx);
+
+window.SSS.requestSign().then((signedTx) => {
+  // announce
+})
+```
+
+```ts
+// sss-module
+import { setTransaction, requestSign } from "sss-module";
+const tx = ...;
+
+setTransaction(tx);
+
+requestSign().then((signedTx) => {
+  // announce
+})
+```
+
+## requestSignCosignatureTransaction
+
+- 引数 なし
+- 戻り値 Promise<SignedTransaction\>
+
+SSS に登録されたアグリゲートトランザクションへと署名し、署名済みトランザクションを返却する。
+
+```ts
+// window.SSS
+const tx = ...;
+
+window.SSS.setTransaction(tx);
+
+window.SSS.requestSignCosignatureTransaction().then((signedTx) => {
+  // announce
+})
+```
+
+```ts
+// sss-module
+import { setTransaction, requestSignCosignatureTransaction } from "sss-module";
+const tx = ...;
+
+setTransaction(tx);
+
+requestSignCosignatureTransaction().then((signedTx) => {
+  // announce
+})
+```
+
+## requestSignWithCosignatories
+
+- 引数 cosignatories: Account[]
+- 戻り値 Promise<SignedTransaction\>
+
+引数で与えた連署者と共に、SSS に登録されたトランザクションへと署名し、署名済みトランザクションを返却する。
+
+```ts
+// window.SSS
+const tx = ...;
+
+const accounts = ...;
+
+window.SSS.setTransaction(tx);
+
+window.SSS.requestSignWithCosignatories([accounts]).then((signedTx) => {
+  // announce
+})
+```
+
+```ts
+// sss-module
+import { setTransaction, requestSignWithCosignatories } from "sss-module";
+const tx = ...;
+
+const accounts = ...;
+
+setTransaction(tx);
+
+requestSignWithCosignatories([accounts]).then((signedTx) => {
+  // announce
+})
+```
