@@ -9,20 +9,20 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'SSS Extension',
   tagline: 'SSS Extension Documents',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.sss-symbol.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/sss_128.png',
-  organizationName: 'SSS Extension', // Usually your GitHub org/user name.
+  organizationName: 'SafelySignSymbool', // Usually your GitHub org/user name.
   projectName: 'SSS Extension Documents',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
   plugins: [
     function(context, options) {
@@ -121,11 +121,11 @@ const config = {
             items: [
               {
                 label: 'UsersGuide',
-                to: '/docs/category/developpers-guide',
+                to: '/category/users-guide',
               },
               {
                 label: 'DevellopersGuide',
-                to: '/docs/category/developpers-guide',
+                to: '/category/developpers-guide',
               },
             ],
           },
