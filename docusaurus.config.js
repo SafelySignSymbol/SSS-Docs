@@ -56,13 +56,13 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/inatatsu-tatsuhiro/SSS-Docs',
+          editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/inatatsu-tatsuhiro/SSS-Docs',
+          editUrl: 'https://github.com/SafelySignSymbol/SSS-Docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -90,7 +90,7 @@ const config = {
           {to: '/demo/testnet', label: 'TESTNET DEMO', position: 'left'},
           {to: '/demo/mainnet', label: 'MAINNET DEMO', position: 'left'},
           {
-            href: 'https://github.com/inatatsu-tatsuhiro/SSS-Docs',
+            href: 'https://github.com/SafelySignSymbol/SSS-Docs',
             label: 'GITHUB',
             position: 'right',
           },
@@ -155,11 +155,11 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/inatatsu-tatsuhiro/SSS-Docs',
+                href: 'https://github.com/SafelySignSymbol/SSS-Docs',
               },
               {
                 label: 'Wiki',
-                href: 'https://github.com/inatatsu-tatsuhiro/SSS-Docs/wiki',
+                href: 'https://github.com/SafelySignSymbol/SSS-Docs/wiki',
               },
               {
                 label: 'Demo',
