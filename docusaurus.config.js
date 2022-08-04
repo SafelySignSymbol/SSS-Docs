@@ -87,8 +87,7 @@ const config = {
             label: 'DOCS',
           },
           {to: '/blog', label: 'BLOG', position: 'left'},
-          {to: '/demo/testnet', label: 'TESTNET DEMO', position: 'left'},
-          {to: '/demo/mainnet', label: 'MAINNET DEMO', position: 'left'},
+          {to: '/demo', label: 'DEMO', position: 'left'},
           {
             href: 'https://github.com/SafelySignSymbol/SSS-Docs',
             label: 'GITHUB',
