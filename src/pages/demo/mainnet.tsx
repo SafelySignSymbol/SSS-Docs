@@ -8,7 +8,8 @@ import {
   requestSSS,
   setTransaction,
 } from "sss-module";
-import { styled } from "@mui/system";
+import styled from '@emotion/styled'
+import { keyframes } from "@emotion/react";
 import {
   Button,
   FormControl,
@@ -254,6 +255,15 @@ const Container = styled("div")({
   flexDirection: "column",
 });
 
+const feedIn = keyframes({
+  '0%': {
+    opacity: 0
+  },
+  '100%': {
+    opacity: 1
+  }
+})
+
 const FormWrapper = styled("div")({
   margin: "40px",
   width: "100%",
@@ -261,7 +271,10 @@ const FormWrapper = styled("div")({
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
+  animation: `${feedIn} 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards`,
+
 });
+
 const BtnWrapper = styled("div")({
   margin: "40px",
   width: "100%",
@@ -269,7 +282,9 @@ const BtnWrapper = styled("div")({
   justifyContent: "center",
   alignItems: "flex-end",
   flexDirection: "column",
+  animation: `${feedIn} 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards`,
 });
+
 
 const LinkWrapper = styled("div")({
   position: "absolute",
