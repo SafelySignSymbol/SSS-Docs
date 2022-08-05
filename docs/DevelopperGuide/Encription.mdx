@@ -39,6 +39,7 @@ requestSignEncription().then((msg) => {
 ```
 
 ## getActiveAccountToken
+Webアプリケーション上に保存されたサービスアカウント(検証者)の公開鍵とユーザーの秘密鍵を用いて暗号化されたセキュアな認証トークンを生成する。
 
 **window.SSS**
 
@@ -159,4 +160,21 @@ const encryptedPayload = verifier.encryptMessage(
 getActiveAccountToken(pubkey, customPayload, encryptedPayload).then((token) => {
   console.log({ token });
 });
+```
+
+### 認証トークンの復号
+getActiveAccountTokenで生成したトークンをサーバーサイドで復号します。
+
+サーバーは認証トークンを受け取ると、ユーザーの公開鍵とサーバー内で保管している検証者の秘密鍵を用いて認証トークンを復号します。
+復号したメッセージのペイロードが認証トークンの内容となります。
+
+```ts
+const authToken = '===== AUTH TOKEN =====' 
+
+const userPublicKey = PublicAccount.createFromPublicKey(user, nt)
+const msg = new EncryptedMessage(authToken, userPublicKey)
+const token = verifier.decryptMessage(msg, userPublicKey).payload
+
+console.log({ token })
+
 ```

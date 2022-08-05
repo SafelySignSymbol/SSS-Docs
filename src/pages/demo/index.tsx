@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
           <CardWrapper>
             <Card title="TEST NET Transfer" body="SymbolテストネットでのXYMの送金デモ" link="/demo/testnet"/>
             <Card title="MAIN NET Transfer" body="SymbolメインネットでのXYMの送金デモ" link="/demo/mainnet"/>
-            {/* <Card title="Authentication" body="Symbolテストネットでのアカウント認証デモ" /> */}
+            <Card title="Authentication" body="Symbolテストネットでのアカウント認証デモ" link="/demo/auth"/>
           </CardWrapper>
         </Wrapper>
       </Layout>
