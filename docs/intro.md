@@ -35,6 +35,6 @@ yarn add sss-module symbol-sdk@2.0.0 rxjs
 スクリプト上で import を用いてモジュールを読み込みます。
 
 ```ts
-import { SSSWindow, getActiveAddress } from "sss-modle";
+import { SSSWindow, getActiveAddress } from "sss-module";
 declare const window: SSSWindow;
 ```
