@@ -1,0 +1,18 @@
+{
+  "item.label.DOCS": {
+    "message": "DOCS",
+    "description": "Navbar item with label DOCS"
+  },
+  "item.label.BLOG": {
+    "message": "BLOG",
+    "description": "Navbar item with label BLOG"
+  },
+  "item.label.DEMO": {
+    "message": "DEMO",
+    "description": "Navbar item with label DEMO"
+  },
+  "item.label.GITHUB": {
+    "message": "GITHUB",
+    "description": "Navbar item with label GITHUB"
+  }
+}

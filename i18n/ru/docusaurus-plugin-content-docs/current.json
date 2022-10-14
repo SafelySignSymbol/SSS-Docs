@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Users Guide": {
+    "message": "Users Guide",
+    "description": "The label for category Users Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Users Guide.link.generated-index.description": {
+    "message": "SSS Extension Users Guide (latest ver 2.2.1)",
+    "description": "The generated-index page description for category Users Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Developpers Guide": {
+    "message": "Developpers Guide",
+    "description": "The label for category Developpers Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Developpers Guide.link.generated-index.description": {
+    "message": "SSS Extension Developpers Guide",
+    "description": "The generated-index page description for category Developpers Guide in sidebar tutorialSidebar"
+  }
+}

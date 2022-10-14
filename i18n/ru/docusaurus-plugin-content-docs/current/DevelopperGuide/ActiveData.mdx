@@ -1,0 +1,119 @@
+---
+sidebar_position: 1
+---
+
+# Property ActiveAccount RU
+
+export const Highlight = ({ children, color, data }) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: "20px",
+      color: "#fff",
+      padding: "10px",
+      cursor: "pointer",
+      margin: "16px",
+    }}
+    onClick={() => {
+      if (window.SSS === undefined) alert("SSS is not active");
+      if (data === "ADDR") alert(`Your Address is ${window.SSS.activeAddress}`);
+      if (data === "PUB")
+        alert(`Your Public Key is ${window.SSS.activePublicKey}`);
+      if (data === "NET")
+        alert(`Your Network is ${window.SSS.activeNetworkType}`);
+      if (data === "NAME") alert(`Your Name is ${window.SSS.activeName}`);
+    }}
+  >
+    {children}
+  </span>
+);
+
+SSS オブジェクトにより提供される ActiveAccount に関するデータの情報を提供するプロパティ群
+
+:::danger
+初回画面描画時にこれらのデータを取得しようとすると、SSS オブジェクトの挿入より先に取得が行われ、値が取得できない場合があります。setTimeout 等で遅延を入れてデータを取得してください。
+:::
+
+## ActiveAddress
+
+ActiveAccount に設定されているアカウントのアドレスを提供するプロパティ
+
+型 : string
+
+```js
+// window.SSS
+const address = window.SSS.activeAddress;
+```
+
+```js
+// sss-module
+import { getActiveAddress } from "sss-module";
+const address = getActiveAddress();
+```
+
+<Highlight color="#25c2a0" data="ADDR">
+  Show ActiveAccount Address
+</Highlight>
+
+## ActivePublicKey
+
+ActiveAccount に設定されているアカウントの公開鍵を提供するプロパティ
+
+型 : string
+
+```js
+// window.SSS
+const pubkey = window.SSS.activePublicKey;
+```
+
+```js
+// sss-module
+import { getActivePublicKey } from "sss-module";
+const pubkey = getActivePublicKey();
+```
+
+<Highlight color="#25c2a0" data="PUB">
+  Show ActiveAccount PublicKey
+</Highlight>
+
+## ActiveNetworkType
+
+ActiveAccount に設定されているアカウントのネットワークを提供するプロパティ
+
+型 : number
+
+```js
+// window.SSS
+const networkType = window.SSS.activeNetworkType;
+```
+
+```js
+// sss-module
+import { getActiveNetworkType } from "sss-module";
+const networkType = getActiveNetworkType();
+```
+
+<Highlight color="#25c2a0" data="NET">
+  Show ActiveAccount Network
+</Highlight>
+
+## ActiveName
+
+ActiveAccount に設定されているアカウントの設定名を提供するプロパティ
+
+型 : string
+
+```js
+// window.SSS
+const name = window.SSS.activeName;
+```
+
+```js
+// sss-module
+import { getActiveName } from "sss-module";
+const name = getActiveName();
+```
+
+<Highlight color="#25c2a0" data="NAME">
+  Show ActiveAccount Name
+</Highlight>

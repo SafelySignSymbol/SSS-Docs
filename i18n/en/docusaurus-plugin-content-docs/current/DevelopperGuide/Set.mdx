@@ -1,0 +1,88 @@
+---
+sidebar_position: 2
+---
+
+# Method Set Data
+
+SSS オブジェクトにより提供される データを SSS へセットするメソッド群
+
+## setTransaction
+
+- 引数
+  - transaction : Transaction
+- 戻り値 void
+
+Web アプリケーションで生成したトランザクションを SSS へと登録する。
+
+```ts
+// window.SSS
+const tx = ...;
+
+window.SSS.setTransaction(tx)
+```
+
+```ts
+// sss-module
+import { setTransaction } from "sss-module";
+
+const tx = ...;
+setTransaction(tx)
+
+```
+
+## setTransactionByPayload
+
+- 引数
+  - serializedTx: string
+- 戻り値 void
+
+トランザクションのシリアライズされたペイロードからトランザクションを SSS へと登録する。
+
+ユースケース
+
+- オフライン連署名を行う場合
+- 新 symbol-sdk など setTransaction の引数の型と一致しない場合
+
+```ts
+// window.SSS
+const tx = ...;
+const serializedTx = tx.serialize()
+
+window.SSS.setTransactionByPayload(serializedTx)
+```
+
+```ts
+// sss-module
+import { setTransaction } from "sss-module";
+const tx = ...;
+const serializedTx = tx.serialize()
+
+setTransactionByPayload(serializedTx)
+```
+
+## setEncriptionMessage
+
+- 引数
+  - message: string
+  - pubkey: string
+- 戻り値 void
+
+暗号化するメッセージと送信先の公開鍵を SSS へと登録する。
+
+```ts
+// window.SSS
+const message = "暗号化したいメッセージ";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+window.SSS.setEncriptionMessage(message, pubkey);
+```
+
+```ts
+// sss-module
+import { setEncriptionMessage } from "sss-module";
+
+const message = "暗号化したいメッセージ";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+setEncriptionMessage(message, pubkey);
+```
