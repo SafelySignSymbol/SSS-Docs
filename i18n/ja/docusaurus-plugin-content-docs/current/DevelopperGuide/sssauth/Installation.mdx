@@ -1,0 +1,212 @@
+---
+sidebar_position: 2
+---
+
+# Installation
+
+```
+pip install sss-auth
+```
+
+## Django側での設定
+Djangoプロジェクトの ```INSTALLED_APPS```や```AUTHENTICATION_BACKENDS```に追加します
+
+```
+INSTALLED_APPS = (
+    ...
+    'sssauth.apps.sssAuthConfig',
+    ...
+)
+AUTHENTICATION_BACKENDS = [
+'django.contrib.auth.backends.ModelBackend',
+'sssauth.backend.Web3Backend'
+]
+```
+
+settings.pyにsssauthで使用される設定を追加します
+```
+SERVER_SECRET = '**************'
+PUB = "************"
+OWNER = "********"
+NETWORK_TYPE = 152 # mainnet: 104, testnet: 152
+EXPIRATION_DATE = 60 * 1 * 1 * 1000
+```
+
+ユーザーモデルの設定を行います
+```
+# Using CustomUser
+AUTH_USER_MODEL = 'sssauth.MyUser'
+```
+URLパターンにsssauthのURLを追加します
+```
+urlpatterns = [
+    path(r'^', include('sssauth.urls', namespace='sssauth')),
+]
+```
+
+ログイン時の挙動を記述してURLに追加します
+```
+from sssauth.forms import LoginForm, SignupForm
+urlpatterns = [
+    path('signup/', CreateView.as_view(
+        template_name='accounts/signup.html',
+        form_class=SignupForm,
+        success_url='/',
+    ), name='signup'),
+    path('login/', LoginView.as_view(
+        redirect_authenticated_user=True,
+        template_name='accounts/login.html',
+    ), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+]
+```
+## Webページでの設定
+### サインイン
+sssauthのjavascriptをインポートし、requestToken()を実行することで署名を要求できます
+```
+  <script src="{% static 'sssauth/js/sssAuth.js' %}"></script>
+  <script>  
+    function requestToken() {
+      if (typeof window.SSS !== 'undefined') {
+        checkSSS(function (loggedIn) {
+          if (!loggedIn) {
+            alert("Please allow thin page in SSS")
+          } else {
+            var login_url = '{% url 'sssauth:sssauth_login_api' %}';
+            SSSLogin(login_url,console.log, console.log, console.log, console.log, console.log, function (resp) {
+              window.location.replace(resp.redirect_url);
+          })
+        };
+        });
+  
+      } else {
+        alert('SSS missing');
+      }
+    }
+  </script>
+  ```
+### サインアップ
+djangpのbootstrapを用いて次のようにしてサインアップフォームが作成できます。
+```
+{% load django_bootstrap5 %}
+
+{% block main %}
+<h2>register</h2>
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% bootstrap_button button_type="submit" content="signup" %}
+</form>
+{% endblock %}
+```
+
+
+# dockerによる構成例
+## ディレクトリ配置
+以下のようにディレクトリを構成します
+```
+.
+├── docker
+│   ├── Dockerfile
+│   └── requirements.txt
+├── docker-compose.yml
+├── python
+│   ├── accounts
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── wsgi.py
+│   ├── db.sqlite3
+│   ├── manage.py
+│   └── templates
+│       ├── accounts
+│       ├── base.html
+│       ├── home.html
+│       └── index.html
+└── script
+    └── start.sh
+```
+## dockerコンテナ
+### Dockerfile
+必要に応じてpythonコンテナの変更を行ってください。
+```
+## docker/Dockerfile
+
+FROM python:3.9.5
+
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /workspace
+
+WORKDIR /workspace
+
+ADD requirements.txt /workspace/
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+```
+あわせて、pythonに必要なパッケージを次のように設定してください。
+```
+# docker/requirements.txt
+Django==4
+django-bootstrap5
+symbol-hkdf-python
+```
+
+### docker-compose
+docker-composeにてコンテナの定義を行います。必要に応じてポート番号の変更を行ってください。今回は次のように定義します
+```
+## docker-compose.yml
+
+version: '3'
+
+services:
+  server:
+    build: ./docker
+    ports:
+      - 8000:8000
+    volumes:
+      - ./python/:/workspace
+      - ./script:/script
+    working_dir: /workspace
+    command: bash /script/start.sh
+```
+
+### 起動スクリプトの設定
+起動時の処理を記述します。```sssauth```では認証を使用するため、初回起動時にindexの作成が必要となります。確認後、サーバの起動を行います。
+
+```
+## scripts/start.sh
+
+# indexの有無を確認
+if [ ! -e 'db.sqlite3' ]; then
+    # 初回起動
+    echo "### initialize start   ####"
+    python manage.py makemigrations web3auth
+    python manage.py migrate
+    echo "### initialize end   ####"
+else
+    # 2回目以降
+    echo "### Already setup ###"
+fi
+# Djangoの起動
+python manage.py runserver 0.0.0.0:8000
+```
+## コンテナの起動
+これらのファイルを構成したら、次のコマンドでサーバを起動することができます
+```
+docker-compose up -d
+```
+起動後、```http://localhost:8000```にアクセスし、ページを閲覧できるか確認してください。
