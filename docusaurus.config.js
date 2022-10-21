@@ -21,8 +21,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'ja',
-    locales: ['ja'],
+    defaultLocale: 'en',
+    locales: ['en', 'ja', 'ru'],
   },
   plugins: [
     function(context, options) {
@@ -88,6 +88,10 @@ const config = {
           },
           {to: '/blog', label: 'BLOG', position: 'left'},
           {to: '/demo', label: 'DEMO', position: 'left'},
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
           {
             href: 'https://github.com/SafelySignSymbol/SSS-Docs',
             label: 'GITHUB',

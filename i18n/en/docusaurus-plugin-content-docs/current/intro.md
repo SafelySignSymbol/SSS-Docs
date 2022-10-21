@@ -37,6 +37,6 @@ yarn add sss-module symbol-sdk@2.0.0 rxjs
 Load the module using import on the script.
 
 ```ts
-import { SSSWindow, getActiveAddress } from "sss-module";
+import { SSSWindow, getActiveAddress } from "sss-modle";
 declare const window: SSSWindow;
 ```

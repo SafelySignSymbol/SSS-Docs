@@ -1,0 +1,180 @@
+---
+sidebar_position: 4
+---
+
+# Method Encription
+
+SSS オブジェクトにより提供される メッセージの暗号化への署名を要求するメソッド群
+
+## requestSignEncription
+
+- 引数 なし
+- 戻り値 Promise<EncryptedMessage\>
+
+セットされたメッセージの情報から暗号化メッセージを作成するために、ユーザーへと署名を要求します。
+
+```ts
+// window.SSS
+const message = "暗号化したいメッセージ";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+window.SSS.setEncriptionMessage(message, pubkey);
+
+window.SSS.requestSignEncription().then((msg) => {
+  console.log({ msg });
+});
+```
+
+```ts
+// sss-module
+import { setEncriptionMessage, requestSignEncription } from "sss-module";
+const message = "暗号化したいメッセージ";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+setEncriptionMessage(message, pubkey);
+
+requestSignEncription().then((msg) => {
+  console.log({ msg });
+});
+```
+
+## getActiveAccountToken
+Webアプリケーション上に保存されたサービスアカウント(検証者)の公開鍵とユーザーの秘密鍵を用いて暗号化されたセキュアな認証トークンを生成する。
+
+**window.SSS**
+
+- 引数
+  - publicKey : string
+  - customPayload : object (省略可)
+  - encryptedPayload : string (省略可)
+- 戻り値 Promise<string\>
+
+**sss-module**
+
+- 引数
+  - publicKey : string | PublicAccount
+  - customPayload : object (省略可)
+  - encryptedPayload : string (省略可)
+- 戻り値 Promise<string\>
+
+アクティブアカウントから指定した公開鍵への暗号化認証トークンを生成します。
+第二引数の payload は json 形式で指定し、デフォルトペイロードと合成し、暗号化認証トークンを作成する。
+
+### デフォルトペイロード
+
+- signerAddress : ActiveAccount のアドレス
+- iat : トークンを生成した時間
+- verufierAddress : ActiveAccount のネットワークと引数で指定した送信先の公開鍵から導出した送信先のアドレス
+- network : ActiveAccount のネットワーク
+
+```ts
+// window.SSS
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+window.SSS.getActiveAccountToken(pubkey).then((token) => {
+  console.log({ token });
+});
+```
+
+```ts
+// sss-module
+import { getActiveAccountToken } from "sss-module";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+getActiveAccountToken(pubkey).then((token) => {
+  console.log({ token });
+});
+```
+
+### カスタムペイロード
+
+デフォルトペイロード以外の要素をトークンに含みたいときに用いる省略可能な引数
+指定した json オブジェクトをデフォルトペイロードとともに、認証トークンを作成します。
+
+```ts
+// window.SSS
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+const customPayload = {
+  deadline: 60 * 60 * 24,
+};
+
+window.SSS.getActiveAccountToken(pubkey, customPayload).then((token) => {
+  console.log({ token });
+});
+```
+
+```ts
+// sss-module
+import { getActiveAccountToken } from "sss-module";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+const customPayload = {
+  deadline: 60 * 60 * 24,
+};
+
+getActiveAccountToken(pubkey, customPayload).then((token) => {
+  console.log({ token });
+});
+```
+
+### 暗号化ペイロード
+
+サーバーから検証者の秘密鍵とユーザーの公開鍵を用いて作成した暗号化メッセージのペイロードを指定し、
+サーバー側で指定した秘密値を含む認証トークンを作成します。
+
+```ts
+// window.SSS
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+const customPayload = {
+  deadline: 60 * 60 * 24,
+};
+
+const encryptedPayload = verifier.encryptMessage(
+  "This is EncriptedPayload",
+  userPublicKey
+);
+
+window.SSS.getActiveAccountToken(pubkey, customPayload, encryptedPayload).then(
+  (token) => {
+    console.log({ token });
+  }
+);
+```
+
+```ts
+// sss-module
+import { getActiveAccountToken } from "sss-module";
+const pubkey = "===== RECIPIENT PUBLIC KEY =====";
+
+const customPayload = {
+  deadline: 60 * 60 * 24,
+};
+
+const encryptedPayload = verifier.encryptMessage(
+  "This is EncriptedPayload",
+  userPublicKey
+).payload;
+
+getActiveAccountToken(pubkey, customPayload, encryptedPayload).then((token) => {
+  console.log({ token });
+});
+```
+
+### 認証トークンの復号
+getActiveAccountTokenで生成したトークンをサーバーサイドで復号します。
+
+サーバーは認証トークンを受け取ると、ユーザーの公開鍵とサーバー内で保管している検証者の秘密鍵を用いて認証トークンを復号します。
+復号したメッセージのペイロードが認証トークンの内容となります。
+
+```ts
+const authToken = '===== AUTH TOKEN =====' 
+
+const userPublicKey = PublicAccount.createFromPublicKey(user, nt)
+const msg = new EncryptedMessage(authToken, userPublicKey)
+const token = verifier.decryptMessage(msg, userPublicKey).payload
+
+console.log({ token })
+
+```
