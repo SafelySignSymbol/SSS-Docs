@@ -9,16 +9,16 @@ slug: /
 
 ### SSS Extension
 
-Install SSS Extension from ChromeWebStore. Please use the latest version under normal circumstances. When there is a request for function implementation by developers, etc., the development and test version may be used for testing and confirmation.
+You can easily install the SSS extension from the ChromeWebStore. Please always use the latest version.
 The development/test version may be used for testing and confirmation.
-Archived versions are released so that older versions can be used when the latest version is not available, for example, when a bug occurs in the latest version.
+Archived versions are released so that older versions can be used when the latest version is not available, such as when the latest version has a bug.
 Archived versions are usually one or two versions behind the latest version.
 
 Translated with www.DeepL.com/Translator (free version)
 
-- [SSS Extension 最新版](https://chrome.google.com/webstore/detail/sss-extension/llildiojemakefgnhhkmiiffonembcan)
-- [SSS Extension 開発・テスト版](https://chrome.google.com/webstore/detail/sss-extension-dev-beta/bljghapgomlclpjmhhjbjhofbgdpiihp)
-- [SSS Extension アーカイブ版](https://chrome.google.com/webstore/detail/sss-extension/mhgjebmbajeidolanlbekpncopdeclio)
+- [SSS Extension - New version](https://chrome.google.com/webstore/detail/sss-extension/llildiojemakefgnhhkmiiffonembcan)
+- [SSS Extension - Test version](https://chrome.google.com/webstore/detail/sss-extension-dev-beta/bljghapgomlclpjmhhjbjhofbgdpiihp)
+- [SSS Extension - Archived version](https://chrome.google.com/webstore/detail/sss-extension/mhgjebmbajeidolanlbekpncopdeclio)
 
 ### SSS Module
 
