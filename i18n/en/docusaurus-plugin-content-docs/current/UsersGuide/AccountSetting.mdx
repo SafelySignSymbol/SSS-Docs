@@ -4,87 +4,86 @@ sidebar_position: 1
 
 # Account Setting
 
-SSS Extension のアカウント操作について説明します。
+This section describes the features of the SSS Extension account.
 
-## アカウントのインポート
+## Import account
 
 :::danger
 
-- SSS Extension は秘密鍵、パスワードを保存しないためご自身で機密情報を紛失しないようにご注意ください。
-- SSS Extension はユーザーによって設定されたパスワード等を用いて暗号化された暗号化秘密鍵を保存します。
-- パスワードを忘れた場合、SSS Extension 上で署名を行えなくなります。アカウントの登録を解除して再登録が必要となります。
+- SSS Extension does not store private keys and passwords, so be careful not to lose sensitive information yourself.
+- SSS Extension stores an encrypted private key, an encrypted password set by the user.
+- If you forget your password and you are unable to log into your SSS Extension account, you will need to unregister and re-register your account so that you can reset your password.
 
 :::
-SSS Extension ではアカウントを登録する方法として以下の 3 種類をサポートしています。
+SSS Extension supports the following three account registration methods.
 
-画面右上のアイコンをクリックし、アカウント追加を選択するとアカウントを追加する画面が表示されます。
+Click the icon in the upper right corner of the screen and select "Add Account" to add your account.
 ![メニュー](./images/menu.png)
 
-- 秘密鍵をインポート
-- 新規アカウント生成
-- ハードウェアウォレット
+- Import private key
+- Create a new account
+- Hardware Wallet
 
 ![アカウント作成](./images/create_account_01.png)
 
-### 1. 秘密鍵をインポート
+### 1. Import private key
 
-「秘密鍵をインポート」を選択すると次のような画面が表示されます。
+When you select Import Private Key, the following screen will appear.
 ![アカウントインポート](./images/create_account_02.png)
 
-- Name : 追加するアカウントの名前を自由に入力してください。
-- Address : 追加するアカウントの Symbol アドレスを入力してください。
-- PrivateKey : 追加するアカウントの秘密鍵を入力してください。
-- Password : アカウントの認証に使用するパスワードを自由に入力してください。
+- Name : Enter any name for your account.
+- Address : Enter the address of the Symbol account you want to add.
+- PrivateKey : Enter the private key of the added account.
+- Password : Enter the password that will be used to authenticate your account.
 
-入力欄の項目を埋め、右下の「Next」ボタンをクリックしてください。
+Please fill in the input fields and click the "Next" button in the lower right corner.
 
-入力内容を確認する画面へと移動したら、入力した内容を確認し「Done」ボタンをクリックしアカウントの登録を完了します。
+Check the entered information and click the "Finish" button to complete the account registration.
 
-入力内容を訂正したい場合は、「Back」ボタンをクリックし、再度設定を行ってください。
+If you want to correct the entered information, click the "Back" button.
 
-### 2. アカウント作成
+### 2. Registration
 
-「アカウントを生成」を選択すると次のような画面が表示されます。
+After selecting "Create Account", the following screen will appear.
 ![アカウント生成](./images/create_account_03.png)
 
-- Name : 追加するアカウントの名前を自由に入力してください。
-- Password : アカウントの認証に使用するパスワードを自由に入力してください。
+- Name : Enter any name for your account.
+- Password : Enter the password that will be used to authenticate your account.
 
-入力欄の項目を埋め、右下の「Next」ボタンをクリックしてください。
+Please fill in the input fields and click the "Next" button in the lower right corner.
 
-入力内容を確認する画面へと移動したら、入力した内容を確認し「Done」ボタンをクリックしアカウントの登録を完了します。
+After proceeding to the confirmation screen, please check the entered information and click the "Done" button to complete the account registration.
 
-入力内容を訂正したい場合は、「Back」ボタンをクリックし、再度設定を行ってください。
+If you want to correct the entered information, click the "Back" button.
 
-### 3. ハードウェアウォレット
+### 3. Hardware Wallet
 
-「ハードウェアウォレット」を選択すると次のような画面が表示されます。
+Select "Hardware Wallet" and the following screen will appear.
 ![ハードウェアウォレット](./images/create_account_04.png)
 
-SSS_Extension は Ledger 製のハードウェアウォレットに対応しています。対応製品を PC へと接続し、
-Symbol アプリケーションを開くと、接続しているハードウェアウォレットが表示されるため、接続してください。
+SSS Extension supports Ledger hardware wallets. So you can connect the Ledger to your PC and then open the Symbol desktop wallet and you will see the connected hardware wallet on the screen and you can easily link it to the SSS Extension.
 
 ![ハードウェアウォレット](./images/create_account_05.png)
-ネットワークと追加するアドレスを選択し、名前を設定し「Next」ボタンをクリックしてください。
+Select the network and address to add, enter a name, and click Next.
 
-入力内容を確認する画面へと移動したら、入力した内容を確認し「Done」ボタンをクリックしアカウントの登録を完了します。
+After proceeding to the confirmation screen, please check the entered information and click the "Done" button to complete the account registration.
 
-入力内容を訂正したい場合は、「Back」ボタンをクリックし、再度設定を行ってください。
+If you want to correct the entered information, click the "Back" button.
 
-## 秘密鍵の確認
+## Private key confirmation
 
 ![アカウントリスト](./images/accounts.png)
-アクティブアカウントの秘密鍵の右にある「目のアイコン」をクリックするとパスワード入力画面が表示されます。
+Click the eye icon to the right of the active account's private key to display the password entry screen.
 ![秘密鍵の確認](./images/check.png)
-パスワードを入力し、「CHECK」ボタンをクリックし秘密鍵を確認することができます。
+You can check the private key by entering the password and clicking the "CHECK" button.
 
-## アクティブアカウントの変更
+## Change active account
 
-アカウント情報の右上の歯車アイコンをクリックするとメニューが開きます。
+Click the gear icon in the top right corner to open the menu.
 ![アカウントメニュー](./images/acc_menu.png)
 
-「Active Account に変更する」を押下することで、メニューを開いているアカウントをアクティブアカウントに変更することができます。
+By clicking "Change to Active Account", you can change the account to an active account.
 
-## アカウントの登録解除
+## Cancellation of account registration
 
-アクティブアカウントの変更と同様、アカウントメニューを開き、「Account の登録を解除する」を押下することで、メニューを開いているアカウントの情報が SSS Extension から削除されます。
+Open the account menu and click "Unregister account", the account information will be deleted from the SSS extension.
