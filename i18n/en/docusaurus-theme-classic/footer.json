@@ -1,6 +1,6 @@
 {
   "link.title.Store": {
-    "message": "Store",
+    "message": "SSS Versions/Store",
     "description": "The title of the footer links column with title=Store in the footer"
   },
   "link.title.Docs": {
@@ -12,15 +12,15 @@
     "description": "The title of the footer links column with title=Community in the footer"
   },
   "link.title.More": {
-    "message": "More",
+    "message": "Other",
     "description": "The title of the footer links column with title=More in the footer"
   },
   "link.item.label.SSS Extension": {
-    "message": "SSS Extension",
+    "message": "SSS Extension - Current",
     "description": "The label of footer link with label=SSS Extension linking to https://chrome.google.com/webstore/detail/sss-extension/llildiojemakefgnhhkmiiffonembcan"
   },
   "link.item.label.SSS Dev version": {
-    "message": "SSS Dev version",
+    "message": "SSS Dev version - Test",
     "description": "The label of footer link with label=SSS Dev version linking to https://chrome.google.com/webstore/detail/sss-extension-dev-beta/bljghapgomlclpjmhhjbjhofbgdpiihp"
   },
   "link.item.label.SSS Archive version": {
@@ -32,7 +32,7 @@
     "description": "The label of footer link with label=UsersGuide linking to /category/users-guide"
   },
   "link.item.label.DevellopersGuide": {
-    "message": "DevellopersGuide",
+    "message": "Developer'sGuide",
     "description": "The label of footer link with label=DevellopersGuide linking to /category/developpers-guide"
   },
   "link.item.label.Twitter": {
