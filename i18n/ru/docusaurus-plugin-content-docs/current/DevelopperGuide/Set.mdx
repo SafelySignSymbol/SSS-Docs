@@ -2,17 +2,17 @@
 sidebar_position: 2
 ---
 
-# Method Set Data
+# Данные набора методов
 
-SSS オブジェクトにより提供される データを SSS へセットするメソッド群
+Методы для установки данных, предоставляемых объектом, в SSS
 
-## setTransaction
+## установить транзакцию
 
-- 引数
-  - transaction : Transaction
-- 戻り値 void
+- Аргументы
+  - transaction : Транзакция
+- Возвращаемое значение void
 
-Web アプリケーションで生成したトランザクションを SSS へと登録する。
+Зарегистрируйте транзакцию, созданную веб-приложением, в SSS.
 
 ```ts
 // window.SSS
@@ -32,16 +32,16 @@ setTransaction(tx)
 
 ## setTransactionByPayload
 
-- 引数
-  - serializedTx: string
-- 戻り値 void
+- аргумент
+  - serializedTx: строка
+- Возвращаемое значение void
 
-トランザクションのシリアライズされたペイロードからトランザクションを SSS へと登録する。
+Зарегистрируйте транзакцию с помощью SSS из сериализованной полезной нагрузки транзакции.
 
-ユースケース
+Пример использования
 
-- オフライン連署名を行う場合
-- 新 symbol-sdk など setTransaction の引数の型と一致しない場合
+- При выполнении совместной подписи в автономном режиме
+- Если он не соответствует типу аргумента setTransaction, например, new symbol-sdk
 
 ```ts
 // window.SSS
@@ -62,12 +62,12 @@ setTransactionByPayload(serializedTx)
 
 ## setEncriptionMessage
 
-- 引数
-  - message: string
-  - pubkey: string
-- 戻り値 void
+- аргумент
+  - message: строка
+  - pubkey: строка
+- Возвращаемое значение void
 
-暗号化するメッセージと送信先の公開鍵を SSS へと登録する。
+Зарегистрируйте сообщение, которое нужно зашифровать, и публичный ключ получателя в SSS.
 
 ```ts
 // window.SSS
