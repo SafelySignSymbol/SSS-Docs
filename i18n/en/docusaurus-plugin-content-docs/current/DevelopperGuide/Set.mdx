@@ -4,15 +4,15 @@ sidebar_position: 2
 
 # Method Set Data
 
-SSS オブジェクトにより提供される データを SSS へセットするメソッド群
+Methods for setting object-provided data in SSS
 
 ## setTransaction
 
-- 引数
+- Arguments
   - transaction : Transaction
-- 戻り値 void
+- Return value void
 
-Web アプリケーションで生成したトランザクションを SSS へと登録する。
+Register the transaction created by the web application with SSS.
 
 ```ts
 // window.SSS
@@ -32,16 +32,16 @@ setTransaction(tx)
 
 ## setTransactionByPayload
 
-- 引数
+- argument
   - serializedTx: string
-- 戻り値 void
+- Return value void
 
-トランザクションのシリアライズされたペイロードからトランザクションを SSS へと登録する。
+Register the transaction with the SSS from the serialized transaction payload.
 
-ユースケース
+Usage example
 
-- オフライン連署名を行う場合
-- 新 symbol-sdk など setTransaction の引数の型と一致しない場合
+- When performing co-signing offline
+- If it doesn't match the type of the setTransaction argument, e.g. new symbol-sdk
 
 ```ts
 // window.SSS
@@ -62,12 +62,12 @@ setTransactionByPayload(serializedTx)
 
 ## setEncriptionMessage
 
-- 引数
+- argument
   - message: string
   - pubkey: string
-- 戻り値 void
+- Return value void
 
-暗号化するメッセージと送信先の公開鍵を SSS へと登録する。
+Register the message to be encrypted and the recipient's public key in SSS.
 
 ```ts
 // window.SSS
