@@ -2,20 +2,20 @@
 sidebar_position: 4
 ---
 
-# Method Encription
+# Метод шифрования
 
 Методы запроса криптографической подписи сообщений, от SSS
 
 ## requestSignEncription
 
-- Никаких аргументов
+- Функция не имеет аргументов
 - Возвращаемое значение Promise<EncryptedMessage\>
 
-Запрашивает у пользователя авторизацию, чтобы создать зашифрованное сообщение на основе информации в заданном сообщении.
+Данная функция запрашивает у пользователя авторизацию, чтобы создать зашифрованное сообщение на основе информации в заданном сообщении.
 
 ```ts
 // window.SSS
-const message = "暗号化したいメッセージ";
+const message = "сообщение, которое вы хотите зашифровать";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
 window.SSS.setEncriptionMessage(message, pubkey);
@@ -28,7 +28,7 @@ window.SSS.requestSignEncription().then((msg) => {
 ```ts
 // sss-module
 import { setEncriptionMessage, requestSignEncription } from "sss-module";
-const message = "暗号化したいメッセージ";
+const message = "сообщение, которое вы хотите зашифровать";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
 setEncriptionMessage(message, pubkey);
@@ -43,11 +43,11 @@ requestSignEncription().then((msg) => {
 
 **window.SSS**
 
-- 引数
+- аргумент
   - publicKey : string
-  - customPayload : object (省略可)
-  - encryptedPayload : string (省略可)
-- 戻り値 Promise<string\>
+  - customPayload : object (Может быть понижен)
+  - encryptedPayload : string (Может быть понижен)
+- Возвращаемое значение Promise<string\>
 
 **sss-module**
 
