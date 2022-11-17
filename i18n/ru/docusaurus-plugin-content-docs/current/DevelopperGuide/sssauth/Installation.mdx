@@ -9,7 +9,7 @@ pip install sss-auth
 ```
 
 ## Настройка на стороне Django
-Из проекта Django выполнить```INSTALLED_APPS```или же```AUTHENTICATION_BACKENDS```
+Из проекта Django выполнить```INSTALLED_APPS```или же```AUTHENTICATION_BACKENDS```добавить в
 
 ```
 INSTALLED_APPS = (
@@ -62,7 +62,7 @@ urlpatterns = [
 ```
 ## Настройки веб-страницы
 ### Войти
-импортировать sssauth javascript、и вы можете запросить подпись, выполнив requestToken()
+импортировать sssauth javascript、и вы можете запросить подпись, выполнив requestToken
 ```
   <script src="{% static 'sssauth/js/sssAuth.js' %}"></script>
   <script>  
