@@ -30,10 +30,6 @@ export const Highlight = ({ children, color, data }) => (
 
 Properties that provide information about ActiveAccount data provided by SSS.
 
-:::danger
-初回画面描画時にこれらのデータを取得しようとすると、SSS オブジェクトの挿入より先に取得が行われ、値が取得できない場合があります。setTimeout 等で遅延を入れてデータを取得してください。
-:::
-
 ## ActiveAddress
 
 ActiveAccount に設定されているアカウントのアドレスを提供するプロパティ
