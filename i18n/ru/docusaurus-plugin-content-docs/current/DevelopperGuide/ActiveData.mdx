@@ -28,7 +28,7 @@ export const Highlight = ({ children, color, data }) => (
   </span>
 );
 
-SSS オブジェクトにより提供される ActiveAccount に関するデータの情報を提供するプロパティ群
+Свойства, предоставляющие информацию о данных ActiveAccount, предоставленных SSS.
 
 :::danger
 初回画面描画時にこれらのデータを取得しようとすると、SSS オブジェクトの挿入より先に取得が行われ、値が取得できない場合があります。setTimeout 等で遅延を入れてデータを取得してください。
@@ -36,9 +36,9 @@ SSS オブジェクトにより提供される ActiveAccount に関するデー�
 
 ## ActiveAddress
 
-ActiveAccount に設定されているアカウントのアドレスを提供するプロパティ
+ActiveAccount Свойство, предоставляющее адрес учетной записи, для которой установлено значение
 
-型 : string
+тип: строка
 
 ```js
 // window.SSS
@@ -52,14 +52,14 @@ const address = getActiveAddress();
 ```
 
 <Highlight color="#25c2a0" data="ADDR">
-  Show ActiveAccount Address
+  Показать адрес ActiveAccount
 </Highlight>
 
 ## ActivePublicKey
 
-ActiveAccount に設定されているアカウントの公開鍵を提供するプロパティ
+Свойство, предоставляющее публичный ключ аккаунта, для ActiveAccount
 
-型 : string
+тип: строка
 
 ```js
 // window.SSS
@@ -73,14 +73,14 @@ const pubkey = getActivePublicKey();
 ```
 
 <Highlight color="#25c2a0" data="PUB">
-  Show ActiveAccount PublicKey
+  Показать адрес ActiveAccount
 </Highlight>
 
 ## ActiveNetworkType
 
-ActiveAccount に設定されているアカウントのネットワークを提供するプロパティ
+Свойства, предоставляющие сеть аккаунтов, установленных в ActiveAccount
 
-型 : number
+тип: строка
 
 ```js
 // window.SSS
@@ -94,12 +94,12 @@ const networkType = getActiveNetworkType();
 ```
 
 <Highlight color="#25c2a0" data="NET">
-  Show ActiveAccount Network
+  Показать сеть ActiveAccount
 </Highlight>
 
 ## ActiveName
 
-ActiveAccount に設定されているアカウントの設定名を提供するプロパティ
+Свойство, предоставляющее настроенное имя учетной записи, установленной в ActiveAccount
 
 型 : string
 
@@ -115,5 +115,5 @@ const name = getActiveName();
 ```
 
 <Highlight color="#25c2a0" data="NAME">
-  Show ActiveAccount Name
+  Показать имя ActiveAccount
 </Highlight>
