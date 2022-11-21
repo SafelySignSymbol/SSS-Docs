@@ -9,7 +9,8 @@ pip install sss-auth
 ```
 
 ## Django side setup
-from a Django project run ```INSTALLED_APPS```or```AUTHENTICATION_BACKENDS```add to
+
+from a Django project run `INSTALLED_APPS`or`AUTHENTICATION_BACKENDS`add to
 
 ```
 INSTALLED_APPS = (
@@ -24,6 +25,7 @@ AUTHENTICATION_BACKENDS = [
 ```
 
 Add the settings used by sssauth to settings.py.
+
 ```
 SERVER_SECRET = '**************'
 PUB = "************"
@@ -33,11 +35,14 @@ EXPIRATION_DATE = 60 * 1 * 1 * 1000
 ```
 
 Customize your custom model
+
 ```
 # Using CustomUser
 AUTH_USER_MODEL = 'sssauth.MyUser'
 ```
+
 Add sssauth url to url template
+
 ```
 urlpatterns = [
     path(r'^', include('sssauth.urls', namespace='sssauth')),
@@ -45,6 +50,7 @@ urlpatterns = [
 ```
 
 Describe the login behavior and add it to the URL
+
 ```
 from sssauth.forms import LoginForm, SignupForm
 urlpatterns = [
@@ -60,12 +66,16 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
 ```
+
 ## Web page settings
+
 ### Enter
-import ssauth javascript and you can request a signature by executing RequestToken
+
+Importing sssauth javascript and you can request a signature by executing RequestToken
+
 ```
   <script src="{% static 'sssauth/js/sssAuth.js' %}"></script>
-  <script>  
+  <script>
     function requestToken() {
       if (typeof window.SSS !== 'undefined') {
         checkSSS(function (loggedIn) {
@@ -78,19 +88,23 @@ import ssauth javascript and you can request a signature by executing RequestTok
           })
         };
         });
-  
+
       } else {
         alert('SSS missing');
       }
     }
   </script>
-  ```
+```
+
 ### Sign up
-import ssauth javascript and you can request a signature by executing RequestToken
+
+importing sssauth javascript and you can request a signature by executing RequestToken
+
 ```
 {% load django_bootstrap5 %}
 
 {% block main %}
+
 <h2>register</h2>
 <form method="post">
   {% csrf_token %}
@@ -100,10 +114,12 @@ import ssauth javascript and you can request a signature by executing RequestTok
 {% endblock %}
 ```
 
-
 # docker configuration Example
+
 ## Directory placement
+
 Configure the directory as follows
+
 ```
 .
 ├── docker
@@ -139,9 +155,13 @@ Configure the directory as follows
 └── script
     └── start.sh
 ```
+
 ## docker container
+
 ### Dockerfile
+
 Make changes to the python container as needed.
+
 ```
 ## docker/Dockerfile
 
@@ -157,7 +177,9 @@ ADD requirements.txt /workspace/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 ```
+
 Also, install the required package for python as follows.
+
 ```
 # docker/requirements.txt
 Django==4
@@ -166,7 +188,9 @@ symbol-hkdf-python
 ```
 
 ### docker-compose
+
 We will define the container in docker-compose. Change the port number as needed. This time we will define it as follows.
+
 ```
 ## docker-compose.yml
 
@@ -185,7 +209,8 @@ services:
 ```
 
 ### Setting up the Startup Script
-Describes the startup process.```sssauth``` To use authentication, you need to create an index at the first startup.After confirmation, start the server.
+
+Describes the startup process.`sssauth` To use authentication, you need to create an index at the first startup.After confirmation, start the server.
 
 ```
 ## scripts/start.sh
@@ -204,9 +229,13 @@ fi
 # Djangoの起動
 python manage.py runserver 0.0.0.0:8000
 ```
+
 ## Start the Container
+
 After you have configured these files, you can start the server with the following command
+
 ```
 docker-compose up -d
 ```
-After the launch、```http://localhost:8000```please visit the link <url> to see if you can view this page.
+
+After the launch、`http://localhost:8000`please visit the link url to see if you can view this page.
