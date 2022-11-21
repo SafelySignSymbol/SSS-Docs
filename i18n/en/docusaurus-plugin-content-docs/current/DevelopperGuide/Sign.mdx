@@ -2,16 +2,16 @@
 sidebar_position: 3
 ---
 
-# Method Transaction Sign
+# Transaction Signing Method
 
-SSS オブジェクトにより提供されるトランザクションへの署名を要求するメソッド群
+A set of methods that require a transaction signature provided by the SSS object
 
 ## requestSign
 
-- 引数 なし
-- 戻り値 Promise<SignedTransaction\>
+- no arguments
+- Return Value Promise<SignedTransaction\>
 
-SSS に登録されたトランザクションへと署名し、署名済みトランザクションを返却する。
+Sign the transaction registered in SSS and return the signed transaction.
 
 ```ts
 // window.SSS
@@ -38,10 +38,10 @@ requestSign().then((signedTx) => {
 
 ## requestSignCosignatureTransaction
 
-- 引数 なし
-- 戻り値 Promise<SignedTransaction\>
+- Argument None
+- Return value Promise<SignedTransaction\>
 
-SSS に登録されたアグリゲートトランザクションへと署名し、署名済みトランザクションを返却する。
+Sign an aggregate transaction registered with SSS and return the signed transaction.
 
 ```ts
 // window.SSS
@@ -68,10 +68,10 @@ requestSignCosignatureTransaction().then((signedTx) => {
 
 ## requestSignWithCosignatories
 
-- 引数 cosignatories: Account[]
-- 戻り値 Promise<SignedTransaction\>
+- argument cosignatories: Account[]
+- Return value Promise<SignedTransaction\>
 
-引数で与えた連署者と共に、SSS に登録されたトランザクションへと署名し、署名済みトランザクションを返却する。
+Signs a transaction registered in SSS with the co-signer given as an argument and returns the signed transaction.
 
 ```ts
 // window.SSS

@@ -2,14 +2,14 @@
 sidebar_position: 2
 ---
 
-# Installation
+# Установка
 
 ```
 pip install sss-auth
 ```
 
-## Django側での設定
-Djangoプロジェクトの ```INSTALLED_APPS```や```AUTHENTICATION_BACKENDS```に追加します
+## Настройка на стороне Django
+Из проекта Django выполнить```INSTALLED_APPS```или же```AUTHENTICATION_BACKENDS```добавить в
 
 ```
 INSTALLED_APPS = (
@@ -23,7 +23,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 ```
 
-settings.pyにsssauthで使用される設定を追加します
+Добавьте настройки, используемые sssauth, в settings.py.
 ```
 SERVER_SECRET = '**************'
 PUB = "************"
@@ -32,19 +32,19 @@ NETWORK_TYPE = 152 # mainnet: 104, testnet: 152
 EXPIRATION_DATE = 60 * 1 * 1 * 1000
 ```
 
-ユーザーモデルの設定を行います
+Настройте свою пользовательскую модель
 ```
 # Using CustomUser
 AUTH_USER_MODEL = 'sssauth.MyUser'
 ```
-URLパターンにsssauthのURLを追加します
+Добавить URL-адрес sssauth в шаблон URL-адреса
 ```
 urlpatterns = [
     path(r'^', include('sssauth.urls', namespace='sssauth')),
 ]
 ```
 
-ログイン時の挙動を記述してURLに追加します
+Опишите поведение при входе в систему и добавьте его в URL
 ```
 from sssauth.forms import LoginForm, SignupForm
 urlpatterns = [
@@ -60,9 +60,9 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
 ```
-## Webページでの設定
-### サインイン
-sssauthのjavascriptをインポートし、requestToken()を実行することで署名を要求できます
+## Настройки веб-страницы
+### Войти
+импортировать sssauth javascript、и вы можете запросить подпись, выполнив requestToken
 ```
   <script src="{% static 'sssauth/js/sssAuth.js' %}"></script>
   <script>  
@@ -85,8 +85,8 @@ sssauthのjavascriptをインポートし、requestToken()を実行すること�
     }
   </script>
   ```
-### サインアップ
-djangpのbootstrapを用いて次のようにしてサインアップフォームが作成できます。
+### Подписывать
+Вы можете создать форму регистрации, используя bootstrap djangp, следующим образом:
 ```
 {% load django_bootstrap5 %}
 
@@ -101,9 +101,9 @@ djangpのbootstrapを用いて次のようにしてサインアップフォー�
 ```
 
 
-# dockerによる構成例
-## ディレクトリ配置
-以下のようにディレクトリを構成します
+# Пример конфигурации с помощью docker
+## Размещение в каталоге
+Настройте каталог следующим образом
 ```
 .
 ├── docker
@@ -139,9 +139,9 @@ djangpのbootstrapを用いて次のようにしてサインアップフォー�
 └── script
     └── start.sh
 ```
-## dockerコンテナ
+## докер-контейнер
 ### Dockerfile
-必要に応じてpythonコンテナの変更を行ってください。
+Внесите изменения в контейнер python по мере необходимости.
 ```
 ## docker/Dockerfile
 
@@ -157,7 +157,7 @@ ADD requirements.txt /workspace/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 ```
-あわせて、pythonに必要なパッケージを次のように設定してください。
+Кроме того, установите необходимый пакет для python следующим образом.
 ```
 # docker/requirements.txt
 Django==4
@@ -166,7 +166,7 @@ symbol-hkdf-python
 ```
 
 ### docker-compose
-docker-composeにてコンテナの定義を行います。必要に応じてポート番号の変更を行ってください。今回は次のように定義します
+Определите контейнер в docker-compose.Измените номер порта по мере необходимости.На этот раз мы определяем его следующим образом
 ```
 ## docker-compose.yml
 
@@ -184,8 +184,8 @@ services:
     command: bash /script/start.sh
 ```
 
-### 起動スクリプトの設定
-起動時の処理を記述します。```sssauth```では認証を使用するため、初回起動時にindexの作成が必要となります。確認後、サーバの起動を行います。
+### Настройка сценария запуска
+Описывает процесс при запуске. Поскольку ```sssauth``` для того чтобы использовать аутентификацию, необходимо создать индекс при первом запуске.После подтверждения запустите сервер.
 
 ```
 ## scripts/start.sh
@@ -204,9 +204,9 @@ fi
 # Djangoの起動
 python manage.py runserver 0.0.0.0:8000
 ```
-## コンテナの起動
-これらのファイルを構成したら、次のコマンドでサーバを起動することができます
+## Запуск контейнера
+После того как вы настроили эти файлы, вы можете запустить сервер с помощью следующей команды
 ```
 docker-compose up -d
 ```
-起動後、```http://localhost:8000```にアクセスし、ページを閲覧できるか確認してください。
+После запуска、```http://localhost:8000``` пожалуйста, посетите ссылку <url>, чтобы узнать, можете ли вы просмотреть эту страницу.

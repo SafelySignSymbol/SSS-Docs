@@ -3,26 +3,26 @@ sidebar_position: 1
 ---
 # About
 
-## このライブラリについて
-このライブラリはDjangoで動作する、SSS-Extensionを利用してユーザ認証を行うことができるライブラリです。
-サーバはSSS-Extensionの認証機能を利用し、安全なログインを行うことができます。
+## About this library
+This library works with Django and can authenticate users with SSS-Extension.
+The server uses the SSS-Extension authentication function and can perform a secure login.
 
-## 認証の仕組みについて
-このライブラリでは、次のようにして認証を行います。DH鍵共有については，Symbol-SDKで使用される暗号化メッセージを使っておこなっています。
-1. サーバがユーザに，サーバの公開鍵を送信しトークンの作成要求を送信します。
-2. ユーザはサーバの公開鍵を使ってDH鍵共有による暗号化トークンを作成します。
-3. サーバは暗号化トークンを受け取り，サーバの秘密鍵をつかってこれを復号します。
-4. 事前に登録されているSymbolアドレス（ログイン情報リスト）と復号結果を照合し，ログインを行います。
+## About the authentication mechanism
+The library performs authentication as follows: For DH key negotiation, this is done using encrypted messages used in the Symbol-SDK.
+1. The server sends a request to the user to create a token by sending the server's public key.
+2. The user uses the server's public key to create a cryptographic token through a DH key agreement.
+3. The server receives the encrypted token and decrypts it using the server's private key.
+4. Login is done by comparing the Symbol's pre-registered address (login information list) with the decryption result.
 
-## サーバに保存される情報について
-サーバはログイン情報として次の情報を保存します。ユーザのパスワードは保存しません。
-- Symbolアドレス
-- Email(Option)
+## Information is stored on the server
+The server stores the following information as login information: It does not store user passwords.
+- Symbol address
+- Email (optional)
 
-認証のために，次の設定をサーバに保存します。使用する秘密鍵はサーバの認証専用とし，他の用途で使用しないようにしてください。
-- サーバーのSymbol秘密鍵
-- 認証で使用するネットワークタイプ
+Save the following settings on the server for authentication: The private key you use should only be used to authenticate the server and should not be used for any other purpose.
+- Symbol server secret key
+- Network type used for authentication
 
-## SSSの許可について
-sssauthではSSSのアクセス許可が必要なため，利用前にWebPageの許可を行う必要があります。
-webページアクセス後，右クリック>"Link to SSS"を選択してSSSのアクセス許可を取得してください。
+## About SSS resolution
+Because sssauth requires permission to access SSS, you must grant permission to the web page before using it.
+After accessing the web page, right-click > select "Link to SSS".

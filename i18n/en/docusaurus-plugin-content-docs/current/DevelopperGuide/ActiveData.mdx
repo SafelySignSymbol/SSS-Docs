@@ -28,17 +28,13 @@ export const Highlight = ({ children, color, data }) => (
   </span>
 );
 
-SSS オブジェクトにより提供される ActiveAccount に関するデータの情報を提供するプロパティ群
-
-:::danger
-初回画面描画時にこれらのデータを取得しようとすると、SSS オブジェクトの挿入より先に取得が行われ、値が取得できない場合があります。setTimeout 等で遅延を入れてデータを取得してください。
-:::
+Properties that provide information about ActiveAccount data provided by SSS.
 
 ## ActiveAddress
 
 ActiveAccount に設定されているアカウントのアドレスを提供するプロパティ
 
-型 : string
+type: line
 
 ```js
 // window.SSS
@@ -57,9 +53,9 @@ const address = getActiveAddress();
 
 ## ActivePublicKey
 
-ActiveAccount に設定されているアカウントの公開鍵を提供するプロパティ
+A property that provides the account's public key for an ActiveAccount
 
-型 : string
+type: line
 
 ```js
 // window.SSS
@@ -80,7 +76,7 @@ const pubkey = getActivePublicKey();
 
 ActiveAccount に設定されているアカウントのネットワークを提供するプロパティ
 
-型 : number
+type: number
 
 ```js
 // window.SSS
@@ -99,9 +95,9 @@ const networkType = getActiveNetworkType();
 
 ## ActiveName
 
-ActiveAccount に設定されているアカウントの設定名を提供するプロパティ
+Property that provides the customized name of the account set in ActiveAccount
 
-型 : string
+type: line
 
 ```js
 // window.SSS
