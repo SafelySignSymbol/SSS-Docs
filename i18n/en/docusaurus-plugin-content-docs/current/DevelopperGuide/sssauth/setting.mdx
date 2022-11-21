@@ -2,23 +2,23 @@
 sidebar_position: 3
 ---
 
-サーバとユーザ間で暗号化トークンのやり取りをおこなうため、トークンのやり取りに使用する秘密鍵の設定を行う必要があります。
-```settings.py```にてこれらの設定を行う必要があります。
+Since encryption tokens are exchanged between the server and users, it is necessary to set the private key used for the exchange of tokens.
+You need to configure these settings in ```settings.py````.
 :::danger
 
-- サーバの秘密鍵にはこのサーバでのみ使用する秘密鍵を入力してください。また、サーバの秘密鍵で資産を管理しないでください。
-- トークンの盗難による不正ログインを防ぐため、有効期限は短めに設定することをおすすめします。ただし、極端に短い場合ユーザが署名するまでの猶予がなくなるため注意してください。
+- Enter a secret key that is used only on this server in the Server secret key field. Also, do not manage assets with the server's private key.
+- We recommend setting a short expiration date to prevent unauthorized entry due to token theft. However, if it is extremely short, the user will not have time to sign, so be careful.
 
 :::
-|  項目名  |  用途  | 値|
+|  item name  |  use  | ценность|
 | ---- | ---- |---- |
-|  SERVER_SECRET  |  サーバが使用する秘密鍵  | String(64)|
-|  PUB  | サーバが使用する公開鍵  |String(64)|
-|  OWNER  |  サーバのSymbolアドレス(ハイフン無し)  |String(39)|
-|  NETWORK_TYPE  |  ネットワークタイプ  |Int(メインネット:104, テストネット:152)|
-|EXPIRATION_DATE|サーバが受け入れる暗号化メッセージの有効期限|Int(ミリ秒）|
+|  SERVER_SECRET  |  Private key used by the server  | String(64)|
+|  PUB  | public key used by the server |String(64)|
+|  OWNER  |  Server's Symbol address (no hyphens) |String(39)|
+|  NETWORK_TYPE  |  network type  |Int(mainnet:104, testnet:152)|
+|EXPIRATION_DATE|Expiration time for encrypted messages accepted by server|Int (milliseconds)|
 
-設定例
+Setting Example
 ```
 SERVER_SECRET = '0000000000000000000000000000000000000000000000000000000000000000'
 PUB = "3B6A27BCCEB6A42D62A3A8D02A6F0D73653215771DE243A63AC048A18B59DA29"
