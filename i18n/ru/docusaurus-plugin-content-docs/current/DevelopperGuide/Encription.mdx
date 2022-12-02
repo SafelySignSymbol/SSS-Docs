@@ -18,7 +18,7 @@ sidebar_position: 4
 const message = "сообщение, которое вы хотите зашифровать";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-window.SSS.setEncriptionMessage(message, pubkey);
+window.SSS.setMessage(message, pubkey);
 
 window.SSS.requestSignEncription().then((msg) => {
   console.log({ msg });
@@ -27,11 +27,11 @@ window.SSS.requestSignEncription().then((msg) => {
 
 ```ts
 // sss-module
-import { setEncriptionMessage, requestSignEncription } from "sss-module";
+import { setMessage, requestSignEncription } from "sss-module";
 const message = "сообщение, которое вы хотите зашифровать";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-setEncriptionMessage(message, pubkey);
+setMessage(message, pubkey);
 
 requestSignEncription().then((msg) => {
   console.log({ msg });
@@ -39,6 +39,7 @@ requestSignEncription().then((msg) => {
 ```
 
 ## getActiveAccountToken
+
 Генерирует безопасный зашифрованный токен аутентификации, используя публичный ключ аккаунта (верификатор) и приватный ключ пользователя, хранящийся в веб-приложении.
 
 **window.SSS**
@@ -162,18 +163,18 @@ getActiveAccountToken(pubkey, customPayload, encryptedPayload).then((token) => {
 ```
 
 ### Расшифровка токена аутентификации
+
 Расшифруйте токен, сгенерированный getActiveAccountToken на стороне сервера.
 
 Когда сервер получает токен аутентификации, он использует публичный ключ пользователя и приватный ключ верификатора, которые хранится на сервере, для расшифровки токена аутентификации.
 Полезная нагрузка расшифрованного сообщения становится содержимым токена аутентификации.
 
 ```ts
-const authToken = '===== AUTH TOKEN =====' 
+const authToken = "===== AUTH TOKEN =====";
 
-const userPublicKey = PublicAccount.createFromPublicKey(user, nt)
-const msg = new EncryptedMessage(authToken, userPublicKey)
-const token = verifier.decryptMessage(msg, userPublicKey).payload
+const userPublicKey = PublicAccount.createFromPublicKey(user, nt);
+const msg = new EncryptedMessage(authToken, userPublicKey);
+const token = verifier.decryptMessage(msg, userPublicKey).payload;
 
-console.log({ token })
-
+console.log({ token });
 ```
