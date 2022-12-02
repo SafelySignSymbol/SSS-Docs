@@ -60,7 +60,7 @@ const serializedTx = tx.serialize()
 setTransactionByPayload(serializedTx)
 ```
 
-## setEncriptionMessage
+## setMessage
 
 - argument
   - message: string
@@ -74,15 +74,15 @@ Register the message to be encrypted and the recipient's public key in SSS.
 const message = "暗号化したいメッセージ";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-window.SSS.setEncriptionMessage(message, pubkey);
+window.SSS.setMessage(message, pubkey);
 ```
 
 ```ts
 // sss-module
-import { setEncriptionMessage } from "sss-module";
+import { setMessage } from "sss-module";
 
 const message = "暗号化したいメッセージ";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-setEncriptionMessage(message, pubkey);
+setMessage(message, pubkey);
 ```

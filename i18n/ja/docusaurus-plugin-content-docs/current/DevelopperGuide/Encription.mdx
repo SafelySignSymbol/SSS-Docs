@@ -18,7 +18,7 @@ SSS オブジェクトにより提供される メッセージの暗号化への
 const message = "暗号化したいメッセージ";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-window.SSS.setEncriptionMessage(message, pubkey);
+window.SSS.setMessage(message, pubkey);
 
 window.SSS.requestSignEncription().then((msg) => {
   console.log({ msg });
@@ -27,11 +27,11 @@ window.SSS.requestSignEncription().then((msg) => {
 
 ```ts
 // sss-module
-import { setEncriptionMessage, requestSignEncription } from "sss-module";
+import { setMessage, requestSignEncription } from "sss-module";
 const message = "暗号化したいメッセージ";
 const pubkey = "===== RECIPIENT PUBLIC KEY =====";
 
-setEncriptionMessage(message, pubkey);
+setMessage(message, pubkey);
 
 requestSignEncription().then((msg) => {
   console.log({ msg });
@@ -39,7 +39,8 @@ requestSignEncription().then((msg) => {
 ```
 
 ## getActiveAccountToken
-Webアプリケーション上に保存されたサービスアカウント(検証者)の公開鍵とユーザーの秘密鍵を用いて暗号化されたセキュアな認証トークンを生成する。
+
+Web アプリケーション上に保存されたサービスアカウント(検証者)の公開鍵とユーザーの秘密鍵を用いて暗号化されたセキュアな認証トークンを生成する。
 
 **window.SSS**
 
@@ -163,18 +164,18 @@ getActiveAccountToken(pubkey, customPayload, encryptedPayload).then((token) => {
 ```
 
 ### 認証トークンの復号
-getActiveAccountTokenで生成したトークンをサーバーサイドで復号します。
+
+getActiveAccountToken で生成したトークンをサーバーサイドで復号します。
 
 サーバーは認証トークンを受け取ると、ユーザーの公開鍵とサーバー内で保管している検証者の秘密鍵を用いて認証トークンを復号します。
 復号したメッセージのペイロードが認証トークンの内容となります。
 
 ```ts
-const authToken = '===== AUTH TOKEN =====' 
+const authToken = "===== AUTH TOKEN =====";
 
-const userPublicKey = PublicAccount.createFromPublicKey(user, nt)
-const msg = new EncryptedMessage(authToken, userPublicKey)
-const token = verifier.decryptMessage(msg, userPublicKey).payload
+const userPublicKey = PublicAccount.createFromPublicKey(user, nt);
+const msg = new EncryptedMessage(authToken, userPublicKey);
+const token = verifier.decryptMessage(msg, userPublicKey).payload;
 
-console.log({ token })
-
+console.log({ token });
 ```
